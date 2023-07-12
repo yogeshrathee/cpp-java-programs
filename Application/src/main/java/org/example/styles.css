@@ -1,0 +1,35 @@
+.response-area {
+    -fx-background-color: #F4F4F4;
+    -fx-padding: 10px;
+    -fx-font-family: Arial, sans-serif;
+    -fx-font-size: 20px;
+    -fx-text-fill: #333333;
+
+}
+
+.response-area .header {
+    -fx-font-weight: bold;
+    -fx-font-size: 30px;
+    -fx-padding: 5px 0;
+}
+
+.response-area .item-label {
+    -fx-font-weight: bold;
+}
+
+.response-area .item-value {
+    -fx-padding: 0 0 0 10px;
+}
+
+.response-area .separator {
+    -fx-padding: 5px 0;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #CCCCCC;
+}
+
+.response-area .no-records {
+    -fx-font-style: italic;
+    -fx-padding: 5px 0;
+    -fx-text-fill: #888888;
+}
