@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+// Define a Java enum representing different coffee sizes and their prices
+enum CoffeeSize {
+    SMALL(50.0),
+    MEDIUM(100.0),
+    LARGE(200.0);
+
+    private final double price;
+
+    CoffeeSize(double price) {
+        this.price = price;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double totalCost = 0.0;
+        boolean wantAnotherCoffee = true;
+
+        while (wantAnotherCoffee) {
+            // Prompt the user to choose a coffee size
+            System.out.println("Available coffee sizes: SMALL, MEDIUM, LARGE");
+            System.out.print("Choose a coffee size: ");
+            String userChoice = scanner.next().toUpperCase();
+
+            // Convert user input to the corresponding CoffeeSize enum constant
+            CoffeeSize chosenSize;
+            try {
+                chosenSize = CoffeeSize.valueOf(userChoice);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid coffee size choice!");
+                continue; // Go to the next iteration to ask for another coffee
+            }
+
+            // Prompt the user for the number of coffees they want
+            System.out.print("How many coffees do you want? ");
+            int numberOfCoffees = scanner.nextInt();
+
+            // Calculate the cost of the chosen coffee size and update the total cost
+            double coffeeCost = chosenSize.getPrice() * numberOfCoffees;
+            totalCost += coffeeCost;
+
+            // Display the chosen coffee size, quantity, and total cost
+            System.out.println("You ordered " + numberOfCoffees + " " + chosenSize + " coffees.");
+            System.out.println("Cost of " + chosenSize + " coffee: RS. " + chosenSize.getPrice());
+            System.out.println("Total cost so far: RS. " + totalCost);
+
+            // Ask the user if they want another coffee
+            System.out.print("Do you want another coffee? (yes/no): ");
+            String wantAnother = scanner.next().toLowerCase();
+            wantAnotherCoffee = wantAnother.equals("yes");
+        }
+
+        System.out.println("Thank you for your order! Total cost: RS. " + totalCost);
+    }
+}
